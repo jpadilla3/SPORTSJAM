@@ -139,90 +139,53 @@ Widget BoxScore(context) {
 }
 
 Widget mlbBoxScore(context) {
-  Widget innings() {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(
-          '1',
-        ),
-        Text(
-          '2',
-        ),
-        Text(
-          '3',
-        ),
-        Text(
-          '4',
-        ),
-        Text(
-          '5',
-        ),
-        Text(
-          '6',
-        ),
-        Text(
-          '7',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '9',
-        ),
-        Text(
-          'R',
-        ),
-        Text(
-          'H',
-        ),
-        Text(
-          'E',
-        ),
-      ],
+  Widget heading(context, String title) {
+    return Container(
+      color: Colors.grey[350],
+      alignment: Alignment.center,
+      height: MediaQuery.of(context).size.height * 0.043,
+      width: ((MediaQuery.of(context).size.width * 0.72) - 30) / 12,
+      child: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 
   Widget inningScores(String team) {
-    return const Row(
+    Widget score(context, String score) {
+      return Container(
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height * 0.0373,
+        width: ((MediaQuery.of(context).size.width * 0.72) - 30) / 12,
+        child: Text(score),
+      );
+    }
+
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text(
-          '2',
+        Container(
+          alignment: Alignment.centerLeft,
+          height: MediaQuery.of(context).size.height * 0.0373,
+          width: MediaQuery.of(context).size.width * 0.28,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 5.0),
+            child: Text(team),
+          ),
         ),
-        Text(
-          '2',
-        ),
-        Text(
-          '2',
-        ),
-        Text(
-          '2',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
-        Text(
-          '8',
-        ),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
+        score(context, '1'),
       ],
     );
   }
@@ -240,59 +203,58 @@ Widget mlbBoxScore(context) {
         children: [
           Row(
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.12,
-                width: MediaQuery.of(context).size.width * 0.28,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //title
-                    const Padding(
-                      padding: EdgeInsets.only(top: 2.0, left: 10),
-                      child: Text(
-                        'Team',
+              Container(
+                color: Colors.grey[350],
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.12,
+                  width: (MediaQuery.of(context).size.width) - 30,
+                  child: Column(
+                    children: [
+                      //quarters
+                      Padding(
+                          padding: const EdgeInsets.only(top: 2.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                color: Colors.grey[350],
+                                alignment: Alignment.centerLeft,
+                                width:
+                                    (MediaQuery.of(context).size.width * 0.28),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.043,
+                                child: const Padding(
+                                  padding: EdgeInsets.only(left: 5.0),
+                                  child: Text(
+                                    'TEAMS',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              heading(context, '1'),
+                              heading(context, '2'),
+                              heading(context, '3'),
+                              heading(context, '4'),
+                              heading(context, '5'),
+                              heading(context, '6'),
+                              heading(context, '7'),
+                              heading(context, '8'),
+                              heading(context, '9'),
+                              heading(context, 'R'),
+                              heading(context, 'H'),
+                              heading(context, 'E'),
+                            ],
+                          )),
+
+                      //divider
+                      const Divider(
+                        color: Colors.black,
+                        height: 0,
                       ),
-                    ),
-
-                    //divider
-                    const Divider(
-                      color: Colors.black,
-                    ),
-
-                    //teams
-                    boxscoreTeams('team1', 'team2', context)
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.12,
-                width: (MediaQuery.of(context).size.width * 0.72) - 30,
-                child: Column(
-                  children: [
-                    //quarters
-                    Padding(
-                        padding: const EdgeInsets.only(top: 2.0),
-                        child: innings()),
-
-                    //divider
-                    const Divider(
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.072,
-                      width: (MediaQuery.of(context).size.width * 0.72) - 30,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          //team1 scores
-                          inningScores('team 1'),
-
-                          //team2 scores
-                          inningScores('team 2')
-                        ],
-                      ),
-                    ),
-                  ],
+                      inningScores('Mariners'),
+                      inningScores('Phillies')
+                    ],
+                  ),
                 ),
               )
             ],
