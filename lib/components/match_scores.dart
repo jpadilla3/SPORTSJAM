@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sportsjam/utils/team_lookup.dart';
 
 import '../main screens/match_page.dart';
 
@@ -22,7 +23,7 @@ Widget myTeams(context, index) {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .072,
                   height: MediaQuery.of(context).size.width * .072,
-                  child: Image.asset('assets/mlb/cap/seattle-cap.png'),
+                  child: Image.asset(mlbTeam.mlbCap('SEA')),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 5),
@@ -40,7 +41,7 @@ Widget myTeams(context, index) {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .072,
                   height: MediaQuery.of(context).size.width * .072,
-                  child: Image.asset('assets/mlb/cap/colorado-cap.png'),
+                  child: Image.asset(mlbTeam.mlbCap('COL')),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(left: 5),
@@ -103,10 +104,8 @@ Widget nbaScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(
-                      context, 'assets/mlb/cap/detroit-cap.png', 'team 1', '1'),
-                  teamLine(
-                      context, 'assets/mlb/cap/toronto-cap.png', 'team 2', '2')
+                  teamLine(context, mlbTeam.mlbCap('DET'), 'team 1', '1'),
+                  teamLine(context, mlbTeam.mlbCap('TOR'), 'team 2', '2')
                 ],
               )
             ],
@@ -153,10 +152,8 @@ Widget nflScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, 'assets/mlb/cap/chicago-cubs-cap.png',
-                      'team 1', '1'),
-                  teamLine(context, 'assets/mlb/cap/baltimore-cap.png',
-                      'team 2', '2')
+                  teamLine(context, mlbTeam.mlbCap('CHC'), 'team 1', '1'),
+                  teamLine(context, mlbTeam.mlbCap('BAL'), 'team 2', '2')
                 ],
               )
             ],
@@ -203,10 +200,8 @@ Widget mlbScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, 'assets/mlb/cap/new-york-mets-cap.png',
-                      'team 1', '1'),
-                  teamLine(
-                      context, 'assets/mlb/cap/arizona-cap.png', 'team 2', '2')
+                  teamLine(context, mlbTeam.mlbCap('NYM'), 'team 1', '1'),
+                  teamLine(context, mlbTeam.mlbCap('ARI'), 'team 2', '2')
                 ],
               )
             ],

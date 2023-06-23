@@ -4,6 +4,7 @@ import 'package:sportsjam/components/match%20page/player_stats.dart';
 import '../components/appbar.dart';
 import '../components/match page/boxscore.dart';
 import '../components/match page/game_live.dart';
+import '../utils/team_lookup.dart';
 
 class MatchPage extends StatefulWidget {
   const MatchPage({super.key});
@@ -54,8 +55,7 @@ class _MatchPageState extends State<MatchPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //team 1
-                  matchPageTeam(
-                      'TEAM 1', 'assets/mlb/main/seattle-logo.png', context),
+                  matchPageTeam('TEAM 1', mlbTeam.mlbLogo('SEA'), context),
 
                   //score 1
                   const Padding(
@@ -87,8 +87,7 @@ class _MatchPageState extends State<MatchPage> {
                   ),
 
                   //team 2
-                  matchPageTeam('TEAM 2',
-                      'assets/mlb/main/philadelphia-logo.png', context)
+                  matchPageTeam('TEAM 2', mlbTeam.mlbLogo('PHI'), context)
                 ],
               ),
             ),
