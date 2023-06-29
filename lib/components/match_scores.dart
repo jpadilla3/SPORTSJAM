@@ -104,8 +104,8 @@ Widget nbaScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, mlbTeam.mlbCap('DET'), 'team 1', '1'),
-                  teamLine(context, mlbTeam.mlbCap('TOR'), 'team 2', '2')
+                  teamLine(context, nbaTeam.nbaLogo('DET'), 'team 1', '1'),
+                  teamLine(context, nbaTeam.nbaLogo('TOR'), 'team 2', '2')
                 ],
               )
             ],
@@ -152,8 +152,8 @@ Widget nflScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, mlbTeam.mlbCap('CHC'), 'team 1', '1'),
-                  teamLine(context, mlbTeam.mlbCap('BAL'), 'team 2', '2')
+                  teamLine(context, nflTeam.nflLogo('CHI'), 'team 1', '1'),
+                  teamLine(context, nflTeam.nflLogo('BAL'), 'team 2', '2')
                 ],
               )
             ],

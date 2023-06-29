@@ -23,72 +23,102 @@ header(String title, context, int section) {
   );
 }
 
-Widget nbaSection(context) {
+Widget nbaSection(context, count) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15.0),
     child: Column(
       children: [
         header('NBA', context, 0),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: count == 0
+              ? MediaQuery.of(context).size.height * 0.12
+              : MediaQuery.of(context).size.height * 0.25,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              itemBuilder: ((context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: nbaScores(context, index),
-                );
-              })),
+          child: count == 0
+              ? const Center(
+                  child: Text(
+                    'No games today',
+                    style: TextStyle(
+                        color: Colors.grey, fontStyle: FontStyle.italic),
+                  ),
+                )
+              : ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: ((context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: nbaScores(context, index),
+                    );
+                  })),
         )
       ],
     ),
   );
 }
 
-Widget nflSection(context) {
+Widget nflSection(context, count) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15.0),
     child: Column(
       children: [
         header('NFL', context, 1),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: count == 0
+              ? MediaQuery.of(context).size.height * 0.12
+              : MediaQuery.of(context).size.height * 0.25,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              itemBuilder: ((context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: nflScores(context, index),
-                );
-              })),
+          child: count == 0
+              ? const Center(
+                  child: Text(
+                    'No games today',
+                    style: TextStyle(
+                        color: Colors.grey, fontStyle: FontStyle.italic),
+                  ),
+                )
+              : ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: ((context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: nflScores(context, index),
+                    );
+                  })),
         )
       ],
     ),
   );
 }
 
-Widget mlbSection(context) {
+Widget mlbSection(context, count) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15.0),
     child: Column(
       children: [
         header('MLB', context, 2),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: count == 0
+              ? MediaQuery.of(context).size.height * 0.12
+              : MediaQuery.of(context).size.height * 0.25,
           width: MediaQuery.of(context).size.width,
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              itemBuilder: ((context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: mlbScores(context, index),
-                );
-              })),
+          child: count == 0
+              ? const Center(
+                  child: Text(
+                    'No games today',
+                    style: TextStyle(
+                        color: Colors.grey, fontStyle: FontStyle.italic),
+                  ),
+                )
+              : ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: ((context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: mlbScores(context, index),
+                    );
+                  })),
         )
       ],
     ),
