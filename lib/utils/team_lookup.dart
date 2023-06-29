@@ -74,3 +74,82 @@ class mlbTeam {
     return cap[abr];
   }
 }
+
+class nflTeam {
+  static nflLogo(String abr) {
+    Map logo = {
+      "ARI": "assets/nfl/arizona-logo.png",
+      "ATL": "assets/nfl/atlanta-logo.png",
+      "BAL": "assets/nfl/baltimore-logo.png",
+      "NE": "assets/nfl/boston-logo.png",
+      "BUF": "assets/nfl/buffalo-logo.png",
+      "CAR": "assets/nfl/carolina-logo.png",
+      "LAC": "assets/nfl/chargers-logo.png",
+      "CHI": "assets/nfl/chicago-logo.png",
+      "CIN": "assets/nfl/cincinnati-logo.png",
+      "CLE": "assets/nfl/cleveland-logo.png",
+      "DAL": "assets/nfl/dallas-logo.png",
+      "DEN": "assets/nfl/denver-logo.png",
+      "DET": "assets/nfl/detroit-logo.png",
+      "HOU": "assets/nfl/houston-logo.png",
+      "KC": "assets/nfl/chiefs-logo.png",
+      "NYG": "assets/nfl/giants-logo.png",
+      "IND": "assets/nfl/indianapolis-logo.png",
+      "JAX": "assets/nfl/jacksonville-logo.png",
+      "NYJ": "assets/nfl/jets-logo.png",
+      "MIA": "assets/nfl/miami-logo.png",
+      "MIN": "assets/nfl/minnesota-logo.png",
+      "OAK": "assets/nfl/oakland-logo.png",
+      "GB": "assets/nfl/packers-logo.png",
+      "PHI": "assets/nfl/philadelphia-logo.png",
+      "PIT": "assets/nfl/pittsburgh-logo.png",
+      "LAR": "assets/nfl/rams-logo.png",
+      "NO": "assets/nfl/saints-logo.png",
+      "SEA": "assets/nfl/seattle-logo.png",
+      "TB": "assets/nfl/tampa-logo.png",
+      "TEN": "assets/nfl/tennessee-logo.png",
+      "WSH": "assets/nfl/washington-logo.png",
+      "SF": "assets/nfl/49ers-logo.png",
+    };
+    return logo[abr];
+  }
+}
+
+class nbaTeam {
+  static nbaLogo(String abr) {
+    Map logo = {
+      "ATL": "assets/nba/atlanta-logo.png",
+      "BKN": "assets/nba/brooklyn-logo.png",
+      "BOS": "assets/nba/boston-logo.png",
+      "CHA": "assets/nba/charlotte-logo.png",
+      "CHI": "assets/nba/chicago-logo.png",
+      "CLE": "assets/nba/cleveland-logo.png",
+      "LAC": "assets/nba/clippers-logo.png",
+      "DAL": "assets/nba/dallas-logo.png",
+      "DEN": "assets/nba/denver-logo.png",
+      "DET": "assets/nba/detroit-logo.png",
+      "GSW": "assets/nba/golden-state-logo.png",
+      "HOU": "assets/nba/houston-logo.png",
+      "IND": "assets/nba/indiana-logo.png",
+      "NYK": "assets/nba/knicks-logo.png",
+      "LAL": "assets/nba/lakers-logo.png",
+      "MEM": "assets/nba/memphis-logo.png",
+      "MIA": "assets/nba/miami-logo.png",
+      "MIL": "assets/nba/milwaukee-logo.png",
+      "MIN": "assets/nba/minnesota-logo.png",
+      "ORL": "assets/nba/orlando-logo.png",
+      "NO": "assets/nba/pelicans-logo.png",
+      "PHI": "assets/nba/philadelphia-logo.png",
+      "PHX": "assets/nba/pheonix-logo.png",
+      "POR": "assets/nba/portland-logo.png",
+      "SAC": "assets/nba/sacramento-logo.png",
+      "SAS": "assets/nba/spurs-logo.png",
+      "OKC": "assets/nba/thunder-logo.png",
+      "UTA": "assets/nba/utah-logo.png",
+      "TOR": "assets/nba/toronto-logo.png",
+      "WSH": "assets/nba/washington-logo.png",
+    };
+
+    return logo[abr];
+  }
+}

@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
             preferredSize: const Size.fromHeight(kToolbarHeight),
             child: appbar()),
         body: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               //my teams section
@@ -62,9 +62,9 @@ class _HomePageState extends State<HomePage> {
                     left: 20, top: 20, right: 20, bottom: 10),
                 child: Column(
                   children: [
-                    nbaSection(context),
-                    nflSection(context),
-                    mlbSection(context)
+                    nbaSection(context, 1),
+                    nflSection(context, 1),
+                    mlbSection(context, 1)
                   ],
                 ),
               ),
