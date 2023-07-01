@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sportsjam/components/game%20components/team_line.dart';
 import 'package:sportsjam/utils/team_lookup.dart';
 
 import '../main screens/match_page.dart';
+import '../data/mlb data/mlb_data.dart';
+import '../utils/date.dart';
 
 Widget myTeams(context, index) {
   return GestureDetector(
@@ -58,7 +61,7 @@ Widget myTeams(context, index) {
   );
 }
 
-Widget teamLine(context, String logo, String name, String score) {
+Widget teamLine(context, String logo, String name) {
   return SizedBox(
     width: (MediaQuery.of(context).size.width - 40) * (5 / 7),
     child: Row(
@@ -66,8 +69,8 @@ Widget teamLine(context, String logo, String name, String score) {
         Padding(
           padding: const EdgeInsets.only(left: 10.0),
           child: SizedBox(
-            width: 40,
-            height: 40,
+            width: 35,
+            height: 35,
             child: Image.asset(logo),
           ),
         ),
@@ -76,10 +79,7 @@ Widget teamLine(context, String logo, String name, String score) {
           child: Text(name),
         ),
         const Spacer(),
-        Padding(
-          padding: const EdgeInsets.only(right: 10.0),
-          child: Text(score),
-        )
+        Padding(padding: const EdgeInsets.only(right: 10.0), child: Container())
       ],
     ),
   );
@@ -104,8 +104,16 @@ Widget nbaScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, nbaTeam.nbaLogo('DET'), 'team 1', '1'),
-                  teamLine(context, nbaTeam.nbaLogo('TOR'), 'team 2', '2')
+                  teamLine(
+                    context,
+                    nbaTeam.nbaLogo('DET'),
+                    'team 1',
+                  ),
+                  teamLine(
+                    context,
+                    nbaTeam.nbaLogo('TOR'),
+                    'team 2',
+                  )
                 ],
               )
             ],
@@ -152,8 +160,16 @@ Widget nflScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, nflTeam.nflLogo('CHI'), 'team 1', '1'),
-                  teamLine(context, nflTeam.nflLogo('BAL'), 'team 2', '2')
+                  teamLine(
+                    context,
+                    nflTeam.nflLogo('CHI'),
+                    'team 1',
+                  ),
+                  teamLine(
+                    context,
+                    nflTeam.nflLogo('BAL'),
+                    'team 2',
+                  )
                 ],
               )
             ],
@@ -181,10 +197,13 @@ Widget nflScores(context, index) {
   );
 }
 
-Widget mlbScores(context, index) {
+Widget mlbScores(context, index, List<MlbGame> games) {
+  final game = games[index];
   return GestureDetector(
-    onTap: () => Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => MatchPage()))),
+    onTap: () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => MatchPage())));
+    },
     child: Row(
       children: [
         Container(
@@ -200,8 +219,8 @@ Widget mlbScores(context, index) {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  teamLine(context, mlbTeam.mlbCap('NYM'), 'team 1', '1'),
-                  teamLine(context, mlbTeam.mlbCap('ARI'), 'team 2', '2')
+                  MlbLine.away(context, game),
+                  MlbLine.home(context, game)
                 ],
               )
             ],
@@ -215,12 +234,12 @@ Widget mlbScores(context, index) {
               color: Colors.grey[400]),
           height: MediaQuery.of(context).size.height * 0.12,
           width: (MediaQuery.of(context).size.width - 40) * (2 / 7),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Today'),
-              Text('7:30 pm'),
+              const Text('Today'),
+              Text(Date.time(game.gameDate)),
             ],
           ),
         )

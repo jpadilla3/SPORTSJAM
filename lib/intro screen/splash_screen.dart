@@ -99,18 +99,18 @@ class _SplashScreenState extends State<SplashScreen> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CircularProgressIndicator(
-                    color: Colors.white,
-                    backgroundColor: Colors.red,
-                    strokeWidth: 5.0,
-                  ),
-                ]
-                    .animate(interval: 5.seconds)
-                    .fadeIn(delay: const Duration(seconds: 3))
-                    .fadeOut(delay: const Duration(seconds: 6))),
+            // Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       const CircularProgressIndicator(
+            //         color: Colors.white,
+            //         backgroundColor: Colors.red,
+            //         strokeWidth: 5.0,
+            //       ),
+            //     ]
+            //         .animate(interval: 5.seconds)
+            //         .fadeIn(delay: const Duration(seconds: 3))
+            //         .fadeOut(delay: const Duration(seconds: 6))),
           ],
         ),
       ),

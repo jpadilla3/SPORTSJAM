@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sportsjam/components/appbar.dart';
 import 'package:sportsjam/components/match_scores.dart';
 import 'package:sportsjam/components/sport_sections.dart';
+import 'package:sportsjam/utils/mlb_api.dart';
+
+import '../data/mlb data/mlb_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +14,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<MlbGame> mlbGames = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchMlbGames();
+  }
+
+  Future<void> fetchMlbGames() async {
+    final response = await MlbApi.fetchGames();
+    setState(() {
+      mlbGames = response;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height * 0.11,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 10,
+                        itemCount: 5,
                         itemBuilder: (context, index) {
                           return Padding(
                               padding:
@@ -64,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     nbaSection(context, 1),
                     nflSection(context, 1),
-                    mlbSection(context, 1)
+                    mlbSection(context, mlbGames.length, mlbGames)
                   ],
                 ),
               ),
