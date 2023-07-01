@@ -3,11 +3,12 @@ import 'package:sportsjam/components/all%20games%20page/games.dart';
 import 'package:sportsjam/components/all%20games%20page/header.dart';
 
 import '../components/appbar.dart';
+import '../data/mlb data/mlb_data.dart';
 
 class AllGames extends StatefulWidget {
-  final String time2;
+  final List<MlbGame> games;
   final int section;
-  const AllGames(this.time2, this.section, {super.key});
+  const AllGames(this.section, this.games, {super.key});
 
   @override
   State<AllGames> createState() => _AllGamesState();
@@ -26,7 +27,7 @@ class _AllGamesState extends State<AllGames> {
             children: [
               heading(context, 'Today\'s Games'),
               widget.section == 2
-                  ? mlbGames(context)
+                  ? mlbGames(context, widget.games)
                   : (widget.section == 0
                       ? nbaGames(context)
                       : nflGames(context))
