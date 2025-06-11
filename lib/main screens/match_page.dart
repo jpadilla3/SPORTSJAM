@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportsjam/components/match%20page/player_stats.dart';
+import 'package:sportsjam/data/mlb%20data/mlb_data.dart';
+import 'package:sportsjam/utils/date.dart';
 
 import '../components/appbar.dart';
 import '../components/match page/boxscore.dart';
@@ -7,7 +9,8 @@ import '../components/match page/game_live.dart';
 import '../utils/team_lookup.dart';
 
 class MatchPage extends StatefulWidget {
-  const MatchPage({super.key});
+  final MlbGame games;
+  const MatchPage(this.games, {super.key});
 
   @override
   State<MatchPage> createState() => _MatchPageState();
@@ -39,7 +42,9 @@ class _MatchPageState extends State<MatchPage> {
   int count = 0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
@@ -55,39 +60,53 @@ class _MatchPageState extends State<MatchPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //team 1
-                  matchPageTeam('TEAM 1', mlbTeam.mlbLogo('SEA'), context),
+                  matchPageTeam(
+                      widget.games.teamInfo.teamInfoAway.clubName,
+                      mlbTeam.mlbLogo(
+                          widget.games.teamInfo.teamInfoAway.abbreviation),
+                      context),
 
                   //score 1
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Text(
-                      '20',
-                      style: TextStyle(fontSize: 30),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: widget.games.gameUtils.isPreview == true
+                        ? const Text(
+                            '-',
+                            style: TextStyle(fontSize: 50),
+                          )
+                        : Text(widget.games.lineScore.teamsScore!.teamScoreAway
+                            .toString()),
                   ),
 
                   //time
-                  const Column(
+                  Column(
                     children: [
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(bottom: 0),
-                        child: Text('Today'),
+                        child: Text("Today"),
                       ),
-                      Text('7:30 pm')
+                      Text(Date.time(widget.games.gameDate))
                     ],
                   ),
 
                   //score 2
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Text(
-                      '20',
-                      style: TextStyle(fontSize: 30),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: widget.games.gameUtils.isPreview == true
+                        ? const Text(
+                            '-',
+                            style: TextStyle(fontSize: 50),
+                          )
+                        : Text(widget.games.lineScore.teamsScore!.teamScoreHome
+                            .toString()),
                   ),
 
                   //team 2
-                  matchPageTeam('TEAM 2', mlbTeam.mlbLogo('PHI'), context)
+                  matchPageTeam(
+                      widget.games.teamInfo.teamInfoHome.clubName,
+                      mlbTeam.mlbLogo(
+                          widget.games.teamInfo.teamInfoHome.abbreviation),
+                      context)
                 ],
               ),
             ),

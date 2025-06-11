@@ -33,8 +33,11 @@ class mlbTeam {
       "TOR": "assets/mlb/main/toronto-logo.png",
       "WSH": "assets/mlb/main/washington-logo.png",
     };
-
-    return teams[abr];
+    if (teams[abr] == null) {
+      return teams["OAK"];
+    } else {
+      return teams[abr];
+    }
   }
 
   static mlbCap(String abr) {
@@ -71,7 +74,11 @@ class mlbTeam {
       "WSH": "assets/mlb/cap/washington-cap.png",
     };
 
-    return cap[abr];
+    if (cap[abr] == null) {
+      return cap["OAK"];
+    } else {
+      return cap[abr];
+    }
   }
 }
 

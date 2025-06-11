@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 5, left: 5),
+                          padding: const EdgeInsets.only(top: 5, left: 15),
                           child: Text(
                             "My Teams",
                             style: TextStyle(color: Colors.grey[800]),
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height * 0.11,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: 0,
                         itemBuilder: (context, index) {
                           return Padding(
                               padding:
@@ -80,8 +80,8 @@ class _HomePageState extends State<HomePage> {
                     left: 20, top: 20, right: 20, bottom: 10),
                 child: Column(
                   children: [
-                    nbaSection(context, 1),
-                    nflSection(context, 1),
+                    nbaSection(context, 0),
+                    nflSection(context, 0),
                     mlbSection(context, mlbGames.length, mlbGames)
                   ],
                 ),

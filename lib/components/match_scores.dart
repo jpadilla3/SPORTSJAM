@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sportsjam/components/game%20components/team_line.dart';
+import 'package:sportsjam/components/mlb/mlb_game_info.dart';
+import 'package:sportsjam/main%20screens/home.dart';
 import 'package:sportsjam/utils/team_lookup.dart';
 
 import '../main screens/match_page.dart';
 import '../data/mlb data/mlb_data.dart';
-import '../utils/date.dart';
 
 Widget myTeams(context, index) {
   return GestureDetector(
     onTap: () => Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => MatchPage()))),
+        context, MaterialPageRoute(builder: ((context) => HomePage()))),
     child: Container(
       decoration: BoxDecoration(
           color: Colors.grey[400], borderRadius: BorderRadius.circular(10)),
@@ -25,7 +26,7 @@ Widget myTeams(context, index) {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .072,
-                  height: MediaQuery.of(context).size.width * .072,
+                  height: MediaQuery.of(context).size.width * .07,
                   child: Image.asset(mlbTeam.mlbCap('SEA')),
                 ),
                 const Padding(
@@ -43,7 +44,7 @@ Widget myTeams(context, index) {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .072,
-                  height: MediaQuery.of(context).size.width * .072,
+                  height: MediaQuery.of(context).size.width * .07,
                   child: Image.asset(mlbTeam.mlbCap('COL')),
                 ),
                 const Padding(
@@ -88,7 +89,7 @@ Widget teamLine(context, String logo, String name) {
 Widget nbaScores(context, index) {
   return GestureDetector(
     onTap: () => Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => MatchPage()))),
+        context, MaterialPageRoute(builder: ((context) => HomePage()))),
     child: Row(
       children: [
         Container(
@@ -144,7 +145,7 @@ Widget nbaScores(context, index) {
 Widget nflScores(context, index) {
   return GestureDetector(
     onTap: () => Navigator.push(
-        context, MaterialPageRoute(builder: ((context) => MatchPage()))),
+        context, MaterialPageRoute(builder: ((context) => HomePage()))),
     child: Row(
       children: [
         Container(
@@ -199,10 +200,11 @@ Widget nflScores(context, index) {
 
 Widget mlbScores(context, index, List<MlbGame> games) {
   final game = games[index];
+
   return GestureDetector(
     onTap: () {
       Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => MatchPage())));
+          context, MaterialPageRoute(builder: ((context) => MatchPage(game))));
     },
     child: Row(
       children: [
@@ -226,23 +228,17 @@ Widget mlbScores(context, index, List<MlbGame> games) {
             ],
           ),
         ),
+
+        //shows current game info
         Container(
-          decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
-              color: Colors.grey[400]),
-          height: MediaQuery.of(context).size.height * 0.12,
-          width: (MediaQuery.of(context).size.width - 40) * (2 / 7),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('Today'),
-              Text(Date.time(game.gameDate)),
-            ],
-          ),
-        )
+            decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                color: Colors.grey[400]),
+            height: MediaQuery.of(context).size.height * 0.12,
+            width: (MediaQuery.of(context).size.width - 40) * (2 / 7),
+            child: mlbinfo(context, game))
       ],
     ),
   );
