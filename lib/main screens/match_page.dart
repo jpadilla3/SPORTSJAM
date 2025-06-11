@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportsjam/components/match%20page/player_stats.dart';
 import 'package:sportsjam/data/mlb%20data/mlb_data.dart';
 import 'package:sportsjam/utils/date.dart';
+import 'package:sportsjam/utils/game_utils.dart';
 
 import '../components/appbar.dart';
 import '../components/match page/boxscore.dart';
@@ -60,6 +61,7 @@ class _MatchPageState extends State<MatchPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //team 1
+
                   matchPageTeam(
                       widget.games.teamInfo.teamInfoAway.clubName,
                       mlbTeam.mlbLogo(
@@ -74,20 +76,16 @@ class _MatchPageState extends State<MatchPage> {
                             '-',
                             style: TextStyle(fontSize: 50),
                           )
-                        : Text(widget.games.lineScore.teamsScore!.teamScoreAway
-                            .toString()),
+                        : Text(
+                            widget
+                                .games.lineScore.teamsScore!.teamScoreAway.runs
+                                .toString(),
+                            style: const TextStyle(fontSize: 35),
+                          ),
                   ),
 
                   //time
-                  Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 0),
-                        child: Text("Today"),
-                      ),
-                      Text(Date.time(widget.games.gameDate))
-                    ],
-                  ),
+                  MlbUtils.gameTime(widget.games),
 
                   //score 2
                   Padding(
@@ -97,8 +95,12 @@ class _MatchPageState extends State<MatchPage> {
                             '-',
                             style: TextStyle(fontSize: 50),
                           )
-                        : Text(widget.games.lineScore.teamsScore!.teamScoreHome
-                            .toString()),
+                        : Text(
+                            widget
+                                .games.lineScore.teamsScore!.teamScoreHome.runs
+                                .toString(),
+                            style: const TextStyle(fontSize: 35),
+                          ),
                   ),
 
                   //team 2
@@ -117,7 +119,6 @@ class _MatchPageState extends State<MatchPage> {
             ),
 
             mlbLive(context),
-
             //boxscore
             mlbBoxScore(context),
 
